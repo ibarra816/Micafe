@@ -45,11 +45,12 @@ Route::group(['middleware' => ['auth']], function () {
 Route::resource('productos', ProductoController::class);
 
 //ruta funcioanidades de vista del carritos de compras 
+Route::middleware(['auth'])->group(function () {
 Route::get('/carrito', [CarritoController::class, 'mostrarCarrito'])->name('carrito');
 Route::post('/carrito/agregar', [CarritoController::class, 'agregarAlCarrito'])->name('agregarAlCarrito');
 Route::post('/carrito/remove/{index}', [CarritoController::class, 'remove'])->name('carrito.remove');
-Route::get('/pedidos/ticket', [PedidoController::class, 'ticket'])->name('pedidos.ticket');
-
+Route::get('/pedidos/ticket', [PedidoController::class, 'ticket'])->name('pagos.pago');
+});
 // rutas ticke pdf 
 
 Route::get('/ticket', [CarritoController::class, 'generarpdf'])->name('pdf.ticketpdf');

@@ -1,36 +1,35 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selección de Pago</title>
-  <link rel="stylesheet" href="{{ asset('styles.css') }}">
-  <style>
-   
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2>Seleccione su método de pago</h2>
-    <div class="buttons2">
-      <button id="cajaButton" onclick="window.location='{{ route('pagos.cafeteria') }}'">Pagar en Cafetería</button>
-      <button id="transferenciaButton" onclick="window.location='{{ route('pagos.transferencia') }}'">Pagar por Transferencia</button>
-    </div>
-  </div>
+@extends('layouts.app')
 
-  
-  <!-- Footer -->
-  <footer>
-    <p>&copy; MiCafe 2023</p>
-  </footer>
-  <script>
+@section('title', 'Pedido Completado')
+
+@section('content')
+<div style="text-align: center;">
+    <h1>Metodo de Pago </h1>
+    <h2>Seleccione su método de pago</h2>
+    <div style="display: flex; justify-content: center;">
+        <div style="display: inline-block;">
+            <form action="{{ route('pagos.cafeteria') }}" method="GET">
+                @csrf
+                <button class="btn btn-primary">Pagar en Cafetería</button>
+            </form>
+        </div>
+        <div style="display: inline-block;">
+            <form action="{{ route('pagos.transferencia') }}" method="GET">
+                <button class="btn btn-primary">Pagar por Transferencia</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+
+<script>
     function pagarEnCafeteria() {
-      alert("Has seleccionado pagar en cafetería. La lógica de procesamiento del pago se implementaría aquí.");
+        window.location.href = "{{ route('pagos.cafeteria') }}";
     }
 
     function pagarPorTransferencia() {
-      alert("Has seleccionado pagar por transferencia. La lógica de procesamiento del pago se implementaría aquí.");
+        window.location.href = "{{ route('pagos.transferencia') }}";
     }
-  </script>
-</body>
-</html>
+</script>
+@endsection
