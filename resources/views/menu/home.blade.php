@@ -47,8 +47,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {{ Auth::user()->name }}</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li class="nav-item"><a class="nav-link" href="{{ route('pedidos.usuario') }}">mis pedidos</a>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('perfil.info') }}">perfil</a>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('profile') }}">perfil</a>
                                 <a class="nav-link" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">
@@ -91,7 +90,7 @@
                 <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="{{ asset($producto->img) }}" alt="Imagen del producto" />                            <!-- Product details-->
+                            <img class="card-img-top" src="{{ asset('ruta/a/imagen_predeterminada.jpg') }}" alt="Imagen del producto" />                            <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                   <h5>{{ $producto->nombre }}</h5>
@@ -128,7 +127,7 @@
     
   <!-- Footer-->
   <footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; MiCafe 2023</p></div>
+    <div class="container"><p class="m-0 text-center text-white"> &copy; MiCafe 2023</p></div>
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

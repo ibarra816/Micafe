@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\carrito;
 use App\Models\Producto;
 
+use Dompdf\Dompdf;
+
+
 class CarritoController extends Controller
 {
     public function agregarAlCarrito(Request $request)
@@ -117,5 +120,38 @@ class CarritoController extends Controller
         // Pasar el pedidoId a la vista "carrito"
         return view('carrito.carrito', ['pedidoId' => $pedidoId]);
     }
+
+    public function generarpdf()
+    {
+        $total = 0;
+        $carrito = session()->get('carrito', []);
+    
+        // Calcular el total del carrito
+        foreach ($carrito as $id => $item) {
+            $total += $item['producto']->precio * $item['cantidad'];
+        }
+    
+        // Obtener los datos necesarios para el PDF
+        $data = [
+            'carrito' => $carrito,
+            'total' => $total,
+        ];
+    
+        // Renderizar la vista a HTML
+        $html = view('pdf.ticketpdf', $data)->render();
+    
+        // Crear un objeto Dompdf
+        $pdf = new Dompdf();
+    
+        // Cargar el HTML en Dompdf y generar el PDF
+        $pdf->loadHtml($html);
+    
+        // Renderizar el PDF
+        $pdf->render();
+    
+        // Devolver el PDF al navegador para su visualización o descarga
+        return $pdf->stream('ticket.pdf');
+    }
+
 
     }

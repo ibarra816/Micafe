@@ -41,18 +41,11 @@
                 </div>
             <input type="number" name="precio" class="form-control">
         </div>
-
         <div class="col-1 col-sm-10">
-            <div class="form-group">
-                <div class="col-1">
-                    <br>
-                    <label for="imagen">Imagen</label>
-                </div>
-            </div>
+        <div class="form-group">
             <input type="file" name="imagen" id="imagen" class="form-control-file">
         </div>
-        <div>
-        
+        </div>
         <br>
         
         @if(isset($producto->imagen))

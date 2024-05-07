@@ -25,7 +25,7 @@
                                 <!-- Puedes agregar más campos de información del usuario según sea necesario -->
 
                                 <!-- Botón para ir al perfil -->
-                                <a href="{{ route('perfil') }}" class="btn btn-primary">editar perfil</a>
+                                <a href="{{ route('profile') }}" class="btn btn-primary">editar perfil</a>
                             </div>
                         </div>
                     </div>

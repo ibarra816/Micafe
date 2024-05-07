@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+        .full-height {
+            height: calc(100vh - 20px); /* Ajusta el valor según tus necesidades */
+            /* 20px se refiere a un margen de 10px arriba y abajo */
+        }
+    </style>
+
     <div class="container text-center">
         <div class="row align-items-start">
             <div class="col-5">
@@ -12,7 +20,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container full-height">
         <div class="row">
             <div class="col-md-11 offset-md-0">
                 <table class="table mt-3">
@@ -34,9 +42,8 @@
                                 <td>{{ $producto->descripcion }}</td>
                                 <td>{{ $producto->precio }}</td>
                                 <td>
-                                    @if ($producto->imagen)
-                                        <img src="{{ asset($producto->imagen) }}" alt="Imagen del producto" style="width: 100px;">
-                                    @endif
+                                <img src="{{ asset($producto->imagen) }}" alt="Imagen del producto">
+
                                 </td>
                                 
                                 

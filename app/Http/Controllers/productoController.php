@@ -33,11 +33,19 @@ class ProductoController extends ControllersCommand{
             'nombre' => 'required',
             'precio' => 'required|numeric',
             'descripcion' => 'required',
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Validar que sea una imagen y de un tipo específico
         ]);
 
         //dd($request);
 
         Producto::create($request->all());
+         // Crear un nuevo producto en la base de datos
+    
+         $nombreImagen = $request->file('imagen')->getClientOriginalName();
+    $request->file('imagen')->storeAs('images', $nombreImagen);
+    
+    $producto->imagen = 'images/' . $nombreImagen; // Guardar la ruta de la imagen en la base de datos
+    $producto->save();
 
    
 
