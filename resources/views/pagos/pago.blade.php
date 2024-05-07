@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Pedido Completado')
+@section('title', '!Pedido Completado¡')
 
 @section('content')
 <div style="text-align: center;">
